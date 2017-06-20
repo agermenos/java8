@@ -1,5 +1,7 @@
 package com.agermenos.java8;
 
+import com.agermenos.java8.interfaces.PrettyPrintPredicate;
+
 import java.util.Arrays;
 
 /**
@@ -26,12 +28,13 @@ public class LambdaPrettyPrintExample {
         return returnSet;
     }
 
+    /**
+     * Why not just add a toString in the Apple Object, and add a prettyTemplate, which defines how each apple presents itself?
+     * @param args
+     */
     public static void main(String args[]) {
-        PrettyPrinPredicate ppp = new PrettyPrinPredicate() {
-            public void print(Apple apple) {
-                System.out.printf("The apple %s has a weight of %doz and is of %s color\n", apple.getBrand(), apple.getWeight(), apple.getColor());
-            }
-        };
+        System.out.println("\n\tApple List\n\t=============\n");
+        PrettyPrintPredicate ppp = apple -> System.out.printf("\tThe %s - %doz (%s)\n", apple.getBrand(), apple.getWeight(), apple.getColor());
 
         LambdaPrettyPrintExample lppe = new LambdaPrettyPrintExample();
         Apple[] apples = lppe.generateApples(10);
